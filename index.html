@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dental Pet Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
+
+  <!-- iOS support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dental Pet">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>🐶 Dental Pet Game</h1>
+    <p>Coins: <span id="coins">0</span></p>
+    <button id="daily Login">Daily Login Reward</button>
+    
+    <section id="quiz">
+      <h2>Dental Health Quiz</h2>
+      <div id="question"></div>
+      <div id="options"></div>
+    </section>
+
+    <canvas id="pet Canvas" width="300" height="300"></canvas>
+  </main>
+
+  <script src="game.js"></script>
+  <script src="sw-register.js" defer></script>
+</body>
+</html>
