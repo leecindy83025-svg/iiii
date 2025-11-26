@@ -1,0 +1,47 @@
+let coins = parseInt(localStorage.getItem("coins")) || 0;
+document.getElementById("coins").textContent = coins;
+
+// Daily login reward
+document.getElementById("dailyLogin").addEventListener("click", () => {
+  const lastLogin = localStorage.getItem("lastLogin");
+  const today = new Date().toDateString();
+  if (lastLogin !== today) {
+    coins += 10; // reward
+    localStorage.setItem("coins", coins);
+    localStorage.setItem("lastLogin", today);
+    document.getElementById("coins").textContent = coins;
+    alert("You got 10 coins for logging in today!");
+  } else {
+    alert("You already claimed today’s reward.");
+  }
+});
+
+// Quiz system
+const quizData = [
+  { q: "How often should you brush your teeth?", options: ["Once a day", "Twice a day", "Once a week", "Only when dirty"], answer: 1 },
+  { q: "What is best for strong teeth?", options: ["Candy", "Milk", "Soda", "Chips"], answer: 1 }
+];
+
+function loadQuiz() {
+  const quiz = quizData[Math.floor(Math.random() * quizData.length)];
+  document.getElementById("question").textContent = quiz.q;
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+  quiz.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.onclick = () => {
+      if (i === quiz.answer) {
+        coins += 5;
+        localStorage.setItem("coins", coins);
+        document.getElementById("coins").textContent = coins;
+        alert("Correct! +5 coins");
+      } else {
+        alert("Oops, try again!");
+      }
+    };
+    optionsDiv.appendChild(btn);
+  });
+}
+
+loadQuiz();
